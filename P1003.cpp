@@ -9,40 +9,19 @@ int main()
 		scanf("%lld %lld %lld %lld",&i[a][0],&i[a][1],&i[a][2],&i[a][3]);
 	}
 	scanf("%lld %lld",&x,&y);
-	long long x_max=0,y_max=0;
-	for(long long j=0;j<n;j++)
-	{
-		if((i[j][0]+i[j][2])>x_max)
-		{
-			x_max=i[j][0]+i[j][2];
-		}
-		if((i[j][1]+i[j][3])>y_max)
-		{
-			y_max=i[j][1]+i[j][3];
-		}
-	}
 	
-	long long p[x_max+1][y_max+1];
-	for(long long a=0;a<=x_max;a++)
+	for(long long j=n-1;j>=0;j--)
 	{
-		for(long long b=0;b<=y_max;b++)
+		long long a=i[j][0];
+		long long b=i[j][1];
+		long long g=i[j][2];
+		long long k=i[j][3];
+		if(x>=a&&x<=a+g&&y>=b&&y<=b+k)
 		{
-			p[a][b]=-1;
+			printf("%lld",j+1);
+			return 0;
 		}
-	}
-	
-	for(long long j=0;j<n;j++)
-	{
-		long long a_=i[j][0],b_=i[j][1];
-		for(long long x_=0;x_<i[j][2];x_++)
-		{
-			for(long long y_=0;y_<i[j][3];y_++)
-			{
-				p[a_+x_][b_+y_]=j+1;
-			}
-		}
-	}
-	if(x<0||y<0||(x>x_max)||(y>y_max))printf("-1");
-	else printf("%lld",p[x][y]);
+	 } 
+	 printf("-1");
 	return 0;
  } 
